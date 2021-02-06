@@ -4,25 +4,25 @@
 ## Async
 
 * Consistently
-```css
-AWAIT |--[V1]--[..]--[Vmax]--| RESULT
+```cmd
+await >--[V1]--[..]--[Vmax]--> result
 ```
 ```javascript
 for (const value of items) await someAsyncFunction(value)
 ```
 * Parallel
-```css
+```cmd
          | V1 |
-AWAIT |--| .. |--| RESULT
+await >--| .. |--> result
          |Vmax|
 ```
 ```javascript
 await Promise.all(items.map(someAsyncFunction))
 ```
 * Partial
-```css
+```cmd
          | V1 |  |Vn+1|  | .. |
-AWAIT |--| .. |--| .. |--| .. |--| RESULT
+await >--| .. |--| .. |--| .. |--> result
          | Vn |  | .. |  |Vmax|
 ```
 ```javascript
