@@ -3,30 +3,30 @@
 
 ## Async
 
-* Consistently
+* Serial
 ```cmd
-await >--[V1]--[..]--[Vmax]--> result
+await >--[V1]--[..]--[Vm]--> result
 ```
 ```javascript
 for (const value of items) await someAsyncFunction(value)
 ```
 * Parallel
 ```cmd
-         | V1 |
-await >--| .. |--> result
-         |Vmax|
+         |V1|
+await >--|..|--> result
+         |Vm|
 ```
 ```javascript
 await Promise.all(items.map(someAsyncFunction))
 ```
 * Partial
 ```cmd
-         | V1 |  |Vn+1|  | .. |
-await >--| .. |--| .. |--| .. |--> result
-         | Vn |  | .. |  |Vmax|
+         |V1|  |..|  |..|
+await >--|..|--|..|--|..|--> result
+         |Vk|  |..|  |Vm|
 ```
 ```javascript
-await Promise.partial(items, someAsyncFunction, n)
+await Promise.partial(items, someAsyncFunction, k)
 ```
 
 ## Install
