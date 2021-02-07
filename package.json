@@ -1,7 +1,7 @@
 {
 	"name": "promise-partial",
 	"description": "Partial Promise execution",
-	"version": "1.0.2",
+	"version": "1.0.1",
 	"author": {
 		"name": "Essle Jaxcate",
 		"email": "me@essle.ru",
@@ -15,5 +15,10 @@
 		"await"
 	],
 	"license": "MIT",
-	"main": "index.js"
+	"main": "index.js",
+	"homepage": "https://github.com/essle/promise-partial#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/essle/promise-partial.git"
+	}
 }
