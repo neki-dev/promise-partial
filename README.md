@@ -1,4 +1,5 @@
 # *Partial Promise execution*
+.
 
 ![Serial](https://i.ibb.co/n77YP3n/serial.png)
 ```javascript
@@ -25,7 +26,7 @@ npm i promise-partial
 const PromisePartial = require('promise-partial');
 PromisePartial.PART_SIZE = 1000;
 ```
-... or
+_... or ...._
 ```js
 require('promise-partial/polyfill');
 Promise.PART_SIZE = 1000;
@@ -43,7 +44,7 @@ await PromisePartial.map(
     2 // Custom part size
 );
 ```
-... or
+_... or ...._
 ```js
 require('promise-partial/polyfill');
 await Promise.partial(
