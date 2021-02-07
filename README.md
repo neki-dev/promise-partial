@@ -3,7 +3,9 @@
 
 ![Serial](https://i.ibb.co/n77YP3n/serial.png)
 ```javascript
-for (const value of items) await someAsyncFunction(value)
+for (const value of items) {
+    await someAsyncFunction(value)
+}
 ```
 ![Parallel](https://i.ibb.co/hM5RTC5/parallel.png)
 ```javascript
@@ -14,13 +16,13 @@ await Promise.all(items.map(someAsyncFunction))
 await Promise.partial(items, someAsyncFunction, k)
 ```
 
-* ## Install
+* ### Install
 
 ```sh
 npm i promise-partial
 ```
 
-* ## Configure
+* ### Configure
 
 ```js
 const PromisePartial = require('promise-partial');
@@ -32,7 +34,7 @@ require('promise-partial/polyfill');
 Promise.PART_SIZE = 1000;
 ```
 
-* ## Usage
+* ### Usage
 
 ```js
 const PromisePartial = require('promise-partial');
@@ -41,7 +43,7 @@ await PromisePartial.map(
     async (value) => { // Callback for execute promise
         await someAsyncFunction(value);
     }, 
-    2 // Custom part size
+    2000 // Custom part size
 );
 ```
 _... or ...._
@@ -52,6 +54,6 @@ await Promise.partial(
     async (value) => { // Callback for execute promise
         await someAsyncFunction(value);
     }, 
-    2 // Custom part size
+    2000 // Custom part size
 );
 ```
