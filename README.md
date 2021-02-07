@@ -1,4 +1,4 @@
-# *Partial Promise execution*
+## Partial Promise execution
 .
 
 ![Serial](https://i.ibb.co/n77YP3n/serial.png)
