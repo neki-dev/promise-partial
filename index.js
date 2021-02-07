@@ -10,10 +10,9 @@ let PART_SIZE = 1000;
  *
  * @return {Array}
  */
-const map = async (values, handler, partSize) => {
+const map = async (values, handler, partSize= PART_SIZE) => {
 
     values = [...values];
-    partSize = partSize || PART_SIZE;
 
     let result = [];
     while (values.length) {
