@@ -1,12 +1,19 @@
 {
 	"name": "promise-partial",
 	"description": "Partial Promise execution",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": {
 		"name": "Essle Jaxcate",
 		"email": "me@essle.ru",
 		"url": "https://essle.ru/"
 	},
+	"keywords": [
+		"promise",
+		"partial",
+		"queue",
+		"async",
+		"await"
+	],
 	"license": "MIT",
 	"main": "index.js"
 }

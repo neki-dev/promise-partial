@@ -1,5 +1,5 @@
 // Default part size
-Promise.PROMISE_PART_SIZE = 1000;
+let PART_SIZE = 1000;
 
 /**
  * Partial Promise execution
@@ -10,10 +10,10 @@ Promise.PROMISE_PART_SIZE = 1000;
  *
  * @return {Array}
  */
-Promise.partial = async (values, handler, partSize) => {
+const map = async (values, handler, partSize) => {
 
     values = [...values];
-    partSize = partSize || Promise.PROMISE_PART_SIZE;
+    partSize = partSize || PART_SIZE;
 
     let result = [];
     while (values.length) {
@@ -26,3 +26,5 @@ Promise.partial = async (values, handler, partSize) => {
     return result;
 
 };
+
+module.exports = {map, PART_SIZE};
