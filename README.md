@@ -1,22 +1,21 @@
-# promise-partial.js
-> Partial Promise execution
-
+### promise-partial.js
+# *Partial Promise execution*
 ---
+
+## Async types
+
 ![Serial](https://i.ibb.co/n77YP3n/serial.png)
 ```javascript
 for (const value of items) await someAsyncFunction(value)
 ```
----
 ![Parallel](https://i.ibb.co/hM5RTC5/parallel.png)
 ```javascript
 await Promise.all(items.map(someAsyncFunction))
 ```
----
 ![Partial](https://i.ibb.co/J2ZcvzV/partial.png)
 ```javascript
 await Promise.partial(items, someAsyncFunction, k)
 ```
----
 
 ## Install
 
