@@ -1,5 +1,7 @@
 # *Partial Promise execution*
 
+* ## Demonstration
+
 ![Serial](https://i.ibb.co/n77YP3n/serial.png)
 ```javascript
 for (const value of items) await someAsyncFunction(value)
@@ -13,13 +15,13 @@ await Promise.all(items.map(someAsyncFunction))
 await Promise.partial(items, someAsyncFunction, k)
 ```
 
-* ### Install
+* ## Install
 
 ```sh
 npm i promise-partial
 ```
 
-* ### Configure
+* ## Configure
 
 ```js
 const PromisePartial = require('promise-partial');
@@ -31,7 +33,7 @@ require('promise-partial/polyfill');
 Promise.PART_SIZE = 1000;
 ```
 
-* ### Usage
+* ## Usage
 
 ```js
 const PromisePartial = require('promise-partial');
