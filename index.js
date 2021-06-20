@@ -5,12 +5,12 @@
  * @param {function} handler - Callback for execute promise
  * @param {number} [cluster] - Size of part
  *
- * @return {Array}
+ * @returns {Array}
  */
 const map = async (values, handler, cluster = PART_SIZE) => {
 
     if (typeof cluster != 'number' || cluster < 1) {
-        throw Error('PromisePartial: Invalid size of part (cluster)');
+        throw Error(`PromisePartial: Invalid cluster '${cluster}'`);
     }
 
     if (values.length <= cluster) {
