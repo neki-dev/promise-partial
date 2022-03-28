@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});const index_1=require("./index");Promise.PART_SIZE=index_1.PART_SIZE,Promise.partial=function(e,i,r=Promise.PART_SIZE){return(0,index_1.default)(e,i,r)};
