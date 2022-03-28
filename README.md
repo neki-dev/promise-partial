@@ -2,6 +2,8 @@
 [![Npm package version](https://badgen.net/npm/v/promise-partial)](https://npmjs.com/package/promise-partial)
 [![Only 32 Kb](https://badge-size.herokuapp.com/neki-dev/promise-partial/master/dist/index.js)](https://github.com/neki-dev/promise-partial/blob/master/dist/index.js)
 
+Partial (mixed) promise execution
+
 .
 
 ![Partial](https://i.ibb.co/J2ZcvzV/partial.png)
