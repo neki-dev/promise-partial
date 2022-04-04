@@ -21,7 +21,7 @@ function handleIterationPart<T, D>(
  *
  * @returns {Array}
  */
-export default async function promisePartial<T = any, D = any>(
+async function promisePartial<T = any, D = any>(
   values: T[],
   handler: IterateHandler<T, D>,
   partSize: number = DEFAULT_PART_SIZE,
