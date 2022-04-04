@@ -1,6 +1,6 @@
 ## Promise partial
 [![Npm package version](https://badgen.net/npm/v/promise-partial)](https://npmjs.com/package/promise-partial)
-[![Only 32 Kb](https://badge-size.herokuapp.com/neki-dev/promise-partial/master/dist/index.js)](https://github.com/neki-dev/promise-partial/blob/master/dist/index.js)
+[![Small size](https://badge-size.herokuapp.com/neki-dev/promise-partial/master/dist/index.js)](https://github.com/neki-dev/promise-partial/blob/master/dist/index.js)
 
 Partial (mixed) promise execution
 
@@ -10,7 +10,7 @@ Partial (mixed) promise execution
 
 Array is divided on grave of group by _K_ items. Items in groups is handled in parallel. But groups themselves are called in turn
 ```javascript
-await Promise.partial(items, someAsyncFunction, K)
+await promisePartial(items, someAsyncFunction, K)
 ```
 .
 
@@ -44,38 +44,28 @@ await Promise.all(items.map(someAsyncFunction))
 npm i promise-partial
 ```
 
-* ### Configure
-
-```js
-const PromisePartial = require('promise-partial');
-PromisePartial.PART_SIZE = 1000;
-
-// OR
-
-require('promise-partial/dist/polyfill');
-Promise.PART_SIZE = 1000;
-```
-
 * ### Usage
 
 ```js
-const PromisePartial = require('promise-partial');
-await PromisePartial.map(
-    items, // Array of promises values
-    async (value) => { // Callback for execute promise
-        await someAsyncFunction(value);
-    }, 
-    2000 // Custom part size
-);
+promisePartial<T, D>(
+    // Array of items for map
+    array: T[],
+    // Callback for handle of item
+    callback: (item: T, index: number) => Promise<D>,
+    // Part size for array dividing
+    partSize: number = 1000
+): Promise<D>[]:
+```
 
-// OR
+* ### Example
 
-require('promise-partial/dist/polyfill');
-await Promise.partial(
-    items, // Array of promises values
-    async (value) => { // Callback for execute promise
-        await someAsyncFunction(value);
-    }, 
-    2000 // Custom part size
-);
+```js
+const promisePartial = require('promise-partial');
+
+const res = await promisePartial([1, 2, 3, /* and more items */], async (v) => {
+    return new Promise((resolve) => {
+        // some async process
+        setTimeout(() => resolve(v * 2), 100);
+    });
+});
 ```

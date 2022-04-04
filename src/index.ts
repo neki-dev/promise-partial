@@ -1,15 +1,12 @@
-import { IterateHandler } from './types';
+type IterateHandler<T, D> = (item: T, index: number) => D;
 
-/**
- * Default part size
- */
-export const PART_SIZE = 1000;
+const DEFAULT_PART_SIZE = 1000;
 
-function handleIterationPart(
-  values: any[],
-  handler: IterateHandler,
+function handleIterationPart<T, D>(
+  values: T[],
+  handler: IterateHandler<T, D>,
   offset: number = 0,
-): Promise<any[]> {
+): Promise<D[]> {
   return Promise.all(
     values.map((value, index: number) => handler(value, offset + index)),
   );
@@ -20,34 +17,38 @@ function handleIterationPart(
  *
  * @param {Array} values - Array of promises values
  * @param {IterateHandler} handler - Callback for execute promise
- * @param {number} [cluster] - Size of part
+ * @param {number} [partSize] - Size of part
  *
  * @returns {Array}
  */
-export default async function map(
-  values: any[],
-  handler: IterateHandler,
-  cluster: number = PART_SIZE,
-): Promise<any[]> {
-  if (typeof cluster !== 'number' || cluster < 1) {
-    throw Error(`PromisePartial: Invalid cluster '${cluster}'`);
+export default async function promisePartial<T = any, D = any>(
+  values: T[],
+  handler: IterateHandler<T, D>,
+  partSize: number = DEFAULT_PART_SIZE,
+): Promise<D[]> {
+  if (typeof partSize !== 'number' || partSize < 1) {
+    throw Error(`PromisePartial: Invalid size part '${partSize}'`);
   }
 
-  if (values.length <= cluster) {
+  if (values.length <= partSize) {
     if (values.length === 0) {
       return [];
     }
-    return handleIterationPart(values, handler);
+    return handleIterationPart<T, D>(values, handler);
   }
 
-  let result: any[] = [];
-  for (let index = 0; index < values.length; index += cluster) {
-    const valuesPart = values.slice(index, index + cluster);
+  let result: D[] = [];
+  for (let index = 0; index < values.length; index += partSize) {
+    const valuesPart = values.slice(index, index + partSize);
     result = result.concat(
       // eslint-disable-next-line no-await-in-loop
-      await handleIterationPart(valuesPart, handler, index),
+      await handleIterationPart<T, D>(valuesPart, handler, index),
     );
   }
 
   return result;
 }
+
+// export for commonjs
+// @ts-ignore
+export = promisePartial;

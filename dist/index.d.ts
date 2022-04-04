@@ -1,15 +1,12 @@
-import { IterateHandler } from './types';
-/**
- * Default part size
- */
-export declare const PART_SIZE = 1000;
+declare type IterateHandler<T, D> = (item: T, index: number) => D;
 /**
  * Partial Promise execution
  *
  * @param {Array} values - Array of promises values
  * @param {IterateHandler} handler - Callback for execute promise
- * @param {number} [cluster] - Size of part
+ * @param {number} [partSize] - Size of part
  *
  * @returns {Array}
  */
-export default function map(values: any[], handler: IterateHandler, cluster?: number): Promise<any[]>;
+export default function promisePartial<T = any, D = any>(values: T[], handler: IterateHandler<T, D>, partSize?: number): Promise<D[]>;
+export = promisePartial;
