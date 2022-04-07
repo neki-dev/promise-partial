@@ -1,7 +1,7 @@
 ## Promise partial
 [![Npm package version](https://badgen.net/npm/v/promise-partial)](https://npmjs.com/package/promise-partial)
 [![Small size](https://badge-size.herokuapp.com/neki-dev/promise-partial/master/dist/index.js)](https://github.com/neki-dev/promise-partial/blob/master/dist/index.js)
-[![Building](https://github.com/neki-dev/promise-partial/actions)](https://github.com/neki-dev/promise-partial/actions/workflows/npm.yml/badge.svg)
+[![Building](https://github.com/neki-dev/promise-partial/actions/workflows/npm.yml/badge.svg)](https://github.com/neki-dev/promise-partial/actions)
 
 Partial (mixed) promise execution
 

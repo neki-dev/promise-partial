@@ -1,7 +1,7 @@
 {
   "name": "promise-partial",
   "description": "Partial (mixed) promise execution",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "keywords": [
     "promise",
     "partial",
