@@ -1,7 +1,7 @@
 {
   "name": "promise-partial",
   "description": "Partial (mixed) promise execution",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "keywords": [
     "promise",
     "partial",
@@ -18,15 +18,15 @@
   "main": "./dist/index.js",
   "scripts": {
     "lint": "eslint ./src --fix",
-    "build": "gulp"
+    "build": "webpack --mode production"
   },
   "devDependencies": {
     "@neki-dev/eslint-config": "github:neki-dev/eslint-config",
-    "gulp": "^4.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1",
-    "gulp-uglify": "^3.0.2",
-    "merge2": "^1.4.1",
-    "typescript": "^4.6.3"
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.3",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.7.2"
   },
   "repository": {
     "type": "git",

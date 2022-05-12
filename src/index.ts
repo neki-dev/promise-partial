@@ -19,9 +19,9 @@ function handleIterationPart<T, D>(
  * @param {IterateHandler} handler - Callback for execute promise
  * @param {number} [partSize] - Size of part
  *
- * @returns {Array}
+ * @returns {Promise<Array>}
  */
-async function promisePartial<T = any, D = any>(
+export default async function promisePartial<T = any, D = any>(
   values: T[],
   handler: IterateHandler<T, D>,
   partSize: number = DEFAULT_PART_SIZE,
@@ -41,14 +41,9 @@ async function promisePartial<T = any, D = any>(
   for (let index = 0; index < values.length; index += partSize) {
     const valuesPart = values.slice(index, index + partSize);
     result = result.concat(
-      // eslint-disable-next-line no-await-in-loop
       await handleIterationPart<T, D>(valuesPart, handler, index),
     );
   }
 
   return result;
 }
-
-// export for commonjs
-// @ts-ignore
-export = promisePartial;
