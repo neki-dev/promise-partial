@@ -1,6 +1,4 @@
-type IterateHandler<T, D> = (item: T, index: number) => D;
-
-const DEFAULT_PART_SIZE = 1000;
+import { IterateHandler } from "./types";
 
 function handleIterationPart<T, D>(
   values: T[],
@@ -17,16 +15,16 @@ function handleIterationPart<T, D>(
  *
  * @param {Array} values - Array of promises values
  * @param {IterateHandler} handler - Callback for execute promise
- * @param {number} [partSize] - Size of part
+ * @param {number} partSize - Size of part
  *
  * @returns {Promise<Array>}
  */
 export default async function promisePartial<T = any, D = any>(
   values: T[],
   handler: IterateHandler<T, D>,
-  partSize: number = DEFAULT_PART_SIZE,
+  partSize: number,
 ): Promise<D[]> {
-  if (typeof partSize !== 'number' || partSize < 1) {
+  if (partSize < 1) {
     throw Error(`PromisePartial: Invalid size part '${partSize}'`);
   }
 
@@ -34,10 +32,12 @@ export default async function promisePartial<T = any, D = any>(
     if (values.length === 0) {
       return [];
     }
+
     return handleIterationPart<T, D>(values, handler);
   }
 
   let result: D[] = [];
+
   for (let index = 0; index < values.length; index += partSize) {
     const valuesPart = values.slice(index, index + partSize);
     result = result.concat(
