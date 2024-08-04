@@ -1,4 +1,4 @@
-declare type IterateHandler<T, D> = (item: T, index: number) => D;
+type IterateHandler<T, D> = (item: T, index: number) => D;
 /**
  * Partial Promise execution
  *

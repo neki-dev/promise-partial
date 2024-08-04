@@ -1,6 +1,0 @@
-{
-  "extends": ["neki/ts"],
-  "rules": {
-    "no-await-in-loop": "off"
-  }
-}
